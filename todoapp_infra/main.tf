@@ -16,13 +16,13 @@ module "vms" {
   vnet_subnet_ids = module.networking.vnet_subnet_ids
 }
 
-# module "loadbalancers" {
-#   depends_on    = [module.rgs, module.networking, module.vms]
-#   source        = "../modules/LoadBalancer"
-#   loadbalancers = var.loadbalancers
-#   backend_pools = var.backend_pools
-#   nic_ids       = module.vms.vm_nic_ids
-# }
+module "loadbalancers" {
+  depends_on    = [module.rgs, module.networking, module.vms]
+  source        = "../modules/LoadBalancer"
+  loadbalancers = var.loadbalancers
+  backend_pools = var.backend_pools
+  nic_ids       = module.vms.vm_nic_ids
+}
 
 module "database" {
   depends_on  = [module.rgs]

@@ -1,13 +1,13 @@
 rgs = {
-  rg-devopsinsiders = {
+  rg-1924 = {
     location = "West Europe"
   }
 }
 
 vnets_subnets = {
-  vnet-devopsinsiders = {
+  vnet-1924 = {
     location            = "West Europe"
-    resource_group_name = "rg-devopsinsiders"
+    resource_group_name = "rg-1924"
     address_space       = ["10.0.0.0/16"]
     # The AzureBastionSubnet Block is required in subnets if enable_bastion=true 
     # AzureBastionSubnet = {
@@ -30,9 +30,9 @@ vnets_subnets = {
 
 vms = {
   "frontendvm" = {
-    resource_group_name = "rg-devopsinsiders"
+    resource_group_name = "rg-1924"
     location            = "West Europe"
-    vnet_name           = "vnet-devopsinsiders"
+    vnet_name           = "vnet-1924"
     subnet_name         = "frontend-subnet"
     size                = "Standard_DS1_v2"
     admin_username      = "devopsadmin"
@@ -48,9 +48,9 @@ vms = {
     enable_public_ip = true
   }
   "backendvm" = {
-    resource_group_name = "rg-devopsinsiders"
+    resource_group_name = "rg-1924"
     location            = "West Europe"
-    vnet_name           = "vnet-devopsinsiders"
+    vnet_name           = "vnet-1924"
     subnet_name         = "backend-subnet"
     size                = "Standard_DS1_v2"
     admin_username      = "devopsadmin"
@@ -70,7 +70,7 @@ vms = {
 loadbalancers = {
   lb-devopsinsiders = {
     location                       = "West Europe"
-    resource_group_name            = "rg-devopsinsiders"
+    resource_group_name            = "rg-1924"
     frontend_ip_configuration_name = "PublicIPAddress"
     sku                            = "Standard"
   }
@@ -79,14 +79,14 @@ loadbalancers = {
 backend_pools = {
   frontend-pool = {
     port        = 80
-    lb_name     = "lb-devopsinsiders"
+    lb_name     = "lb-1924"
     backend_vms = ["frontendvm1", "frontendvm2"]
   }
 }
 
 servers_dbs = {
   "devopsinssrv1" = {
-    resource_group_name            = "rg-devopsinsiders"
+    resource_group_name            = "rg-1924"
     location                       = "West Europe"
     version                        = "12.0"
     administrator_login            = "devopsadmin"
